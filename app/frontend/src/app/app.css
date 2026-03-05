@@ -339,3 +339,128 @@ body,
   line-height: 24px !important;
 }
 
+/* ==================== Mobile Responsive Styles ==================== */
+
+@media (max-width: 768px) {
+  /* --- Masthead --- */
+  .title-text {
+    display: none;
+  }
+
+  /* --- Chat Header --- */
+  .chat-header {
+    padding: 6px 8px !important;
+  }
+
+  /* Allow the PF chatbot header to wrap actions below title */
+  .pf-chatbot__header {
+    flex-wrap: wrap !important;
+  }
+
+  .pf-chatbot__header-actions-container {
+    width: 100%;
+  }
+
+  .chat-header-actions {
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  .chat-header-actions .pf-v6-c-button {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+
+  /* --- Chat Grid: stack vertically on mobile --- */
+  .chat-grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .chat-grid > * {
+    grid-column: auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  .chat-grid-item::before {
+    display: none !important;
+  }
+
+  /* --- Message Bar: ensure buttons are touchable --- */
+  .pf-chatbot__message-bar {
+    flex-wrap: wrap;
+  }
+
+  .pf-chatbot__message-bar-actions {
+    flex-shrink: 0;
+  }
+
+  .pf-chatbot__message-bar-actions button {
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  /* Prevent the footer from being clipped by parent overflow */
+  .pf-chatbot__footer {
+    flex-shrink: 0;
+  }
+
+  .chat-footer {
+    padding: 4px !important;
+  }
+
+  /* --- Images --- */
+  .chat-inline-image {
+    max-width: 70%;
+    margin-left: 10px;
+  }
+
+  .chat-attachment-preview-image {
+    max-width: 100px;
+  }
+
+  /* --- Jump scroll buttons --- */
+  .pf-chatbot__jump.pf-chatbot__jump--top,
+  .pf-chatbot__jump.pf-chatbot__jump--bottom {
+    inset-inline-start: 85% !important;
+  }
+
+  /* --- Disclaimer --- */
+  .chat-disclaimer {
+    font-size: x-small;
+    padding: 2px 4px;
+  }
+
+  /* --- Model stats & select --- */
+  .chat-llm-stats {
+    flex-wrap: wrap;
+    font-size: 0.7rem;
+  }
+
+  .chat-llm-select {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-inline-image {
+    max-width: 55%;
+    margin-left: 5px;
+  }
+
+  .pf-chatbot__message-avatar {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .chat-header-actions .pf-v6-c-button {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+}
+

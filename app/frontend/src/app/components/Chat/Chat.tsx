@@ -236,7 +236,7 @@ const Chat: React.FunctionComponent<ChatProps> = () => {
                 </ChatbotHeaderTitle>
               </ChatbotHeaderMain>
               <ChatbotHeaderActions>
-                <Flex>
+                <Flex flexWrap={{ default: 'wrap' }} gap={{ default: 'gapSm' }} className="chat-header-actions">
                   <FlexItem>
                     <Button onClick={addItem} variant="primary">
                       Add LLM

@@ -78,6 +78,7 @@ const ChatAnswer = forwardRef((props: ChatAnswerProps, ref: Ref<ChatAnswerRef>) 
   // Stopwatch and timer for tokens stats
   const startTime = useRef<number | null>(null);
   const [tokens, setTokens] = React.useState<number>(0);
+  const [totalTokens, setTotalTokens] = React.useState<number>(0);
   const [ttft, setTtft] = React.useState<number>(0);
   const [tps, setTps] = React.useState<number>(0);
 
@@ -105,6 +106,7 @@ const ChatAnswer = forwardRef((props: ChatAnswerProps, ref: Ref<ChatAnswerRef>) 
             focusOnNewAnswer();
           }
           const newTokens = prevTokens + 1;
+          setTotalTokens((prev) => prev + 1);
           if (newTokens === 1) {
             if (startTime.current !== null) {
               setTtft((Date.now() - startTime.current) / 1000);
@@ -246,6 +248,7 @@ const ChatAnswer = forwardRef((props: ChatAnswerProps, ref: Ref<ChatAnswerRef>) 
       new MessageContent(new Answer(t('chat.content.greeting'), new Date())),
     ]));
     setAnswer(new Answer('', new Date())); // Clear the previous response
+    setTotalTokens(0);
   };
 
 
@@ -337,7 +340,10 @@ const ChatAnswer = forwardRef((props: ChatAnswerProps, ref: Ref<ChatAnswerRef>) 
               <Content component="p" className='chat-llm-stats'>{ttft.toFixed(2)}s tft,</Content>
             )}
             {tps !== 0 && (
-              <Content component="p" className='chat-llm-stats'>{tps.toFixed(2)} t/s</Content>
+              <Content component="p" className='chat-llm-stats'>{tps.toFixed(2)} t/s,</Content>
+            )}
+            {totalTokens !== 0 && (
+              <Content component="p" className='chat-llm-stats'>{totalTokens} tokens</Content>
             )}
           </Content>
         </Flex>
