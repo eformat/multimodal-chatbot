@@ -319,7 +319,7 @@ const Chat: React.FunctionComponent<ChatProps> = () => {
               </ChatbotFooter>
           </Chatbot>
         </FlexItem>
-        <FlexItem>
+        <FlexItem style={{ flexShrink: 0 }}>
           <Stack>
             {/* Disclaimer section */}
             <StackItem>

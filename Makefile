@@ -1,0 +1,22 @@
+# Image URL to use all building/pushing image targets
+REGISTRY ?= quay.io
+REPOSITORY ?= $(REGISTRY)/eformat/multimodal-chatbot
+
+IMG := $(REPOSITORY):latest
+PODMAN_ARGS ?=
+
+# Podman Login
+podman-login:
+	@podman login -u $(DOCKER_USER) -p $(DOCKER_PASSWORD) $(REGISTRY)
+
+# Build the oci image
+podman-build:
+	podman build $(PODMAN_ARGS) ./app -t ${IMG} -f app/Containerfile
+
+# Push the oci image
+podman-push: podman-build
+	podman push ${IMG}
+
+# Just Push the oci image
+podman-push-nobuild:
+	podman push ${IMG}
